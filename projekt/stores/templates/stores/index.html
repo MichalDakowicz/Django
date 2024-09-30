@@ -1,0 +1,13 @@
+<h1>Lista Pracowników</h1>
+<ul>
+    {% for employee in employees %}
+    <li>
+        Imię: {{ employee.first_name }}<br />
+        Nazwisko: {{ employee.last_name }}<br />
+        Sklep:
+        <a href="{% url 'store_details' employee.store.id %}"
+            >{{ employee.store.name }}</a
+        >
+    </li>
+    {% endfor %}
+</ul>
