@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'stores/style.css' %}" />
+    </head>
+    <body>
+        <h1 id="normal_header">Lista Kierowników</h1>
+        <a href="{% url 'home_page' %}" id="back_button"
+            ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="40px"
+                viewBox="0 -960 960 960"
+                width="40px"
+                fill="#f4f4f4"
+            >
+                <path
+                    d="M760-200v-160q0-50-35-85t-85-35H273l144 144-57 56-240-240 240-240 57 56-144 144h367q83 0 141.5 58.5T840-360v160h-80Z"
+                /></svg
+        ></a>
+        <ul>
+            {% for manager in managers %}
+            <li>
+                Sklep:
+                <a href="{% url 'store_details' manager.store.id %}"
+                    >{{ manager.store.name }}</a
+                ><br />
+                Kierownicy: {% for employee in manager.employees.all %} {{
+                employee.first_name }} {{ employee.last_name }} {% if not
+                forloop.last %}, {% endif %} {% endfor %}
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

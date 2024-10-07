@@ -1,13 +1,26 @@
-<h1>Lista Pracowników</h1>
-<ul>
-    {% for employee in employees %}
-    <li>
-        Imię: {{ employee.first_name }}<br />
-        Nazwisko: {{ employee.last_name }}<br />
-        Sklep:
-        <a href="{% url 'store_details' employee.store.id %}"
-            >{{ employee.store.name }}</a
-        >
-    </li>
-    {% endfor %}
-</ul>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'stores/style.css' %}" />
+    </head>
+    <body>
+        <h1 id="normal_header">Strona Główna</h1>
+
+        <ul>
+            <li>
+                <a href="{% url 'employee_list' %}" id="employee_list_button"
+                    >Lista Pracowników</a
+                >
+            </li>
+            <li>
+                <a href="{% url 'manager_list' %}" id="manager_list_button"
+                    >Lista Managerów</a
+                >
+            </li>
+        </ul>
+    </body>
+</html>

@@ -13,4 +13,12 @@ class Employee(models.Model):
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name} - {self.store.name}"
+    
+class Manager(models.Model):
+    employees = models.ManyToManyField(Employee)
+    store = models.OneToOneField(Store, on_delete=models.CASCADE)
+
+    def __str__(self):
+        employee_names = ", ".join([f"{employee.first_name} {employee.last_name}" for employee in self.employees.all()])
+        return f"{self.store.name} - {employee_names}"
