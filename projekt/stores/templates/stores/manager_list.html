@@ -28,9 +28,11 @@
                 <a href="{% url 'store_details' manager.store.id %}"
                     >{{ manager.store.name }}</a
                 ><br />
-                Kierownicy: {% for employee in manager.employees.all %} {{
-                employee.first_name }} {{ employee.last_name }} {% if not
-                forloop.last %}, {% endif %} {% endfor %}
+                Kierownicy: {% for employee in manager.employees.all %} 
+                {{ employee.first_name }} 
+                {{ employee.last_name }} 
+                {% if not forloop.last %}, {% endif %} 
+                {% endfor %}
             </li>
             {% endfor %}
         </ul>
